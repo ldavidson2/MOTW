@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./Home.css";
 
@@ -41,7 +42,10 @@ const Home = () => {
                 {monsters && monsters.map((monster) => {
                   return (
                     <tr key={monster.Name}>
-                      <td>{monster.Name}</td>
+                      <td>
+                        <Link to="/Monster" state={{ PK: monster.PK }}>
+                          {monster.Name}
+                        </Link></td>
                       <td>{monster.Class}</td>
                       <td>{monster.Size}</td>
                       <td>{monster.Toughness}</td>
