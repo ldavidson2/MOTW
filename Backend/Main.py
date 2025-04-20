@@ -24,11 +24,17 @@ load_dotenv()
 awsAccessKey = os.getenv('ACCESS_KEY')
 awsSecretAccessKey = os.getenv('SECRET_ACCESS_KEY')
 region = os.getenv('REGION')
+bucketName = os.getenv('BUCKET')
 
 dynamodb = boto3.resource('dynamodb', region_name=region,
          aws_access_key_id=awsAccessKey,
          aws_secret_access_key= awsSecretAccessKey)
 table = dynamodb.Table(os.getenv('TABLE'))
+
+s3Bucket = boto3.resource(service_name='s3', region_name=region, 
+         aws_access_key_id=awsAccessKey, aws_secret_access_key=awsSecretAccessKey)
+
+s3_client = boto3.client('s3', aws_access_key_id=awsAccessKey, aws_secret_access_key=awsSecretAccessKey, region_name=region)
 
 app.add_middleware(
     CORSMiddleware,
@@ -61,3 +67,17 @@ async def get_monsters(monsterId):
         )
 
     return monsters
+
+@app.get("/monsterImage/{monsterId}")
+async def get_monsters(monsterId):
+    monster = table.scan(
+        FilterExpression=Attr('PK').eq(monsterId)
+    )
+    fileName = monster['Items'][0]['Name'] + '.png'
+    print(fileName)
+    monsterImage = s3_client.generate_presigned_url('get_object',
+                                                    Params={'Bucket': bucketName,
+                                                            'Key': fileName},
+                                                    ExpiresIn=600)
+    print(monsterImage)
+    return monsterImage
