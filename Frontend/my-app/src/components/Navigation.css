@@ -1,0 +1,9 @@
+#navBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 20vw;
+    margin: 1.5vh auto auto auto;
+    height: 10vh;
+    line-height: 10vh;
+}

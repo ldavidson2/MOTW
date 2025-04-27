@@ -2,13 +2,15 @@
     margin: auto;
     display: flex;
     flex-direction: row;
-    height: 85vh;
-    justify-content: space-around;
+    width: 90vw;
+    height: 75vh;
+    margin-top: 2vh;
+    justify-content: space-between;
 }
 
 #imageContainer {
-    width: 35%;
-    height: 100%;
+    width: 30vw;
+    max-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,16 +24,76 @@ img {
 
 table {
     float: left;
-    width: 15%;
+    width: 59vw;
+    border-spacing: 0 1vh;
+    padding: 1vw;
 }
 
 td {
-    text-align: left;
-    font-size: 1.5vw;
+    width: 9vw;
+}
+
+thead {
+    text-align: center;
+    line-height: 10vh;
+}
+
+thead tr {
+    text-align: center;
+    font-size: 2vw;
+}
+
+thead th {
+    border-bottom: 0.1vh solid #abddff;
+}
+
+tbody tr {
+    height: 0.5vh;
+}
+
+tbody td {
+    height: 0.5vh;
+}
+
+.labels {
     font-weight: 500;
 }
 
-#notes {
-    width: 35%;
+td {
+    text-align: center;
+    font-size: 1.1vw;
+}
+
+#stats {
+    vertical-align: top;    
+}
+
+.specialAbilities .labels {
+    line-height: 0.5vh;
+    height: 0.5vh;
+}
+
+.specialAbilities .text {
+    padding-top: 0.5vh;
+    vertical-align: top;
+}
+
+.specialAbilities td {
     text-align: left;
+    padding: 0 1vw 0 1vw;
+}
+
+.notes td{
+    text-align: left;
+    padding: 0 1vw 0 1vw;
+}
+
+.notes .labels {
+    line-height: 0.5vh;
+    height: 0.5vh;
+}
+
+.notes .text {
+    padding-top: 0.5vh;
+    vertical-align: top;
 }

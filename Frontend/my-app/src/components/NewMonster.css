@@ -1,0 +1,23 @@
+#form {
+  width: 30vw;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 3.5vh;
+  line-height: 5.5vh;
+}
+
+#form label {
+  display: inline-block;
+  width: 15vw;
+}
+
+#form input {
+  display: block;
+  width: 10vw;
+}
+
+.input.is-danger{
+    border-color: #ed6580;
+  }

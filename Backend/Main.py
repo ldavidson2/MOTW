@@ -38,11 +38,23 @@ s3_client = boto3.client('s3', aws_access_key_id=awsAccessKey, aws_secret_access
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins="http://localhost:3000/",
+    allow_origins="http://localhost:8000/",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+class NewMonster(BaseModel):
+    PK: str | None = None
+    name: str | None = None
+    monsterClass: int | None = None
+    size: int | None = None
+    toughness: int | None = None
+    intelligence: int | None = None
+    riskFactor: int | None = None
+    specialAbilityRating: int | None = None
+    specialAbilities: str | None = ""
+    notes: str | None = ""
 
 @app.get("/", response_class=HTMLResponse)
 async def root(request: Request):
@@ -74,10 +86,39 @@ async def get_monsters(monsterId):
         FilterExpression=Attr('PK').eq(monsterId)
     )
     fileName = monster['Items'][0]['Name'] + '.png'
-    print(fileName)
     monsterImage = s3_client.generate_presigned_url('get_object',
                                                     Params={'Bucket': bucketName,
                                                             'Key': fileName},
                                                     ExpiresIn=600)
-    print(monsterImage)
     return monsterImage
+
+@app.post("/newMonster")
+async def new_monster(newMonster: NewMonster):
+    table.put_item(
+        Item={
+            'PK': newMonster.PK,
+            'Name': newMonster.name,
+            'MonsterClass': newMonster.monsterClass,
+            'Size': newMonster.size,
+            'Toughness': newMonster.toughness, 
+            'Intelligence': newMonster.intelligence,
+            'RiskFactor': newMonster.riskFactor,
+            'SpecialAbilityRating': newMonster.specialAbilityRating,
+            'SpecialAbilities': newMonster.specialAbilities,
+            'Notes': newMonster.notes
+        },
+    )
+    response = '{"message": "Monster created successfully", "success": "true"}'
+    return Response(content=response, media_type="application/json")
+
+@app.get("/searchMonsters/{search}")
+async def get_patients(search):
+    monsters = table.scan()
+    searchResults = []
+    
+    for i in range(len(monsters['Items'])):
+        name = monsters["Items"][i]['Name'].lower()
+        if (name in search.lower()) or (search.lower() in name):
+            searchResults.append(monsters["Items"][i])
+    
+    return searchResults
