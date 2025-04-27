@@ -10,7 +10,7 @@ a:link {
   text-decoration: none;
   font-size: 1.6vw;
   color: #fff;
-  text-shadow: 0 0 0.01vw #1d68d8, 0 0 0.1vw #1d68d8, 0 0 0.2vw #0647a8, 0 0 0.3vw #0647a8, 0 0 0.4vw #0647a8, 0 0 0.5vw #0647a8, 0 0 0.6vw #0647a8;
+  text-shadow: 0 0 0.01vw #e87dbb, 0 0 0.1vw #e87dbb, 0 0 0.2vw #d4426b, 0 0 0.3vw #d4426b, 0 0 0.4vw #d4426b, 0 0 0.5vw #d4426b, 0 0 0.6vw #0647a8;
 }
 
 a:visited {

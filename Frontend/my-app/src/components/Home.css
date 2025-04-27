@@ -31,6 +31,7 @@
     border: 0.5vh solid rgba(41, 189, 226, .001);
     background-color: rgba(41, 189, 226, 0.15);
     padding: 0.2vw;
+    color: rgba(101, 172, 238, 0.7);
 }
 
 #searchBar::placeholder {

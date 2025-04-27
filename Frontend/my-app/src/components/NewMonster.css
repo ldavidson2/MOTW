@@ -1,6 +1,6 @@
 #form {
-  width: 30vw;
-  margin: auto;
+  width: 45vw;
+  margin: 8vh auto auto auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -13,9 +13,86 @@
   width: 15vw;
 }
 
-#form input {
+#form input, 
+#form select {
   display: block;
-  width: 10vw;
+  width: 12vw;
+  height: 3vh;
+  font-family: "Jockey One", sans-serif;
+  background-color: rgba(41, 189, 226, 0.15);
+  border: 0.4vh solid rgba(18, 85, 173, 0.01);
+  color: rgba(101, 172, 238, 0.7);
+  outline: 0.4vh solid #13294e;
+}
+
+#form select {
+  width: 12.6vw;
+}
+
+select option {
+  background-color: #13294e;  
+}
+
+#form input {
+  padding: 0 0.3vw 0 0.3vw;
+}
+
+#inputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#left {
+  width: 20vw;
+}
+
+textarea {
+  background-color: rgba(41, 189, 226, 0.15);
+  border: 0.4vh solid rgba(18, 85, 173, 0.01);
+  color: rgba(101, 172, 238, 0.7);
+  display: block;
+  width: 26vw;
+  height: 16vh;
+  font-family: "Jockey One", sans-serif;
+}
+
+#right {
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#button {
+  margin: 5vh auto auto auto;
+}
+
+button#buttons {
+  background-color: rgba(41, 189, 226, 0.15);
+  border: 0.4vh solid rgba(18, 85, 173, 0.01);
+  color: rgba(101, 172, 238, 0.7);
+  cursor: pointer;
+  font-family: "Jockey One", sans-serif;
+  font-size: 3.5vh;
+  width: 12vw;
+  height: 6vh;
+  padding: 0.2vw;
+  line-height: 1.8vh;
+  margin-top: 1vh;
+  border-radius: 0.2vh;
+}
+
+button#buttons:hover,
+button#buttons:focus {
+  background-color: rgba(41, 189, 226, 0.1);
+  color: #2c5777;
+}
+
+button#buttons:active {
+  background-color: rgba(41, 189, 226, 0.15);
+  box-shadow: none;
+  color: #2c5777;
 }
 
 .input.is-danger{

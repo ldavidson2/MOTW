@@ -84,15 +84,15 @@ const Home = () => {
             onKeyDown={pressEnter}
           />
         </div>
-        <button
+        {/* <button
           id="searchButton"
-          onClick={() => {
-            searchMonster(keyword);
-          }}
-          onKeyDown={pressEnter}
+          // onClick={() => {
+          //   searchMonster(keyword);
+          // }}
+          // onKeyDown={pressEnter}
         >
          Search
-        </button>
+        </button> */}
       </div>
     );
   }
